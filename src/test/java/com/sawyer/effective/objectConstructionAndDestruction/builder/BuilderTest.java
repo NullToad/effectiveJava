@@ -1,10 +1,8 @@
 package com.sawyer.effective.objectConstructionAndDestruction.builder;
 
+import com.sawyer.effective.BaseTest;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * @Author: Sawyer
@@ -12,9 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  * @Date: Created in 4:47 PM 2019/2/2
  */
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class NutritionFactsTest {
+public class BuilderTest extends BaseTest {
 
     @Test
     public void test() {
