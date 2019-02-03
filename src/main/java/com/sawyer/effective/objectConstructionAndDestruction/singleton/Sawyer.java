@@ -1,8 +1,8 @@
-package com.sawyer.effective.singleton;
+package com.sawyer.effective.objectConstructionAndDestruction.singleton;
 
 /**
  * @Author: Sawyer
- * @Description:
+ * @Description: 单例的最佳实践：枚举
  * @Date: Created in 5:02 PM 2019/2/2
  */
 
