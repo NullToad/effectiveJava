@@ -45,4 +45,13 @@ public final class PhoneNumber {
         result = 31 * result + phone;
         return result;
     }
+
+    /**
+     * 建议每个类都覆盖toString方法，切提供一个自描述的实现
+     * @return
+     */
+    @Override
+    public String toString() {
+        return areaCode + "-" + phone;
+    }
 }

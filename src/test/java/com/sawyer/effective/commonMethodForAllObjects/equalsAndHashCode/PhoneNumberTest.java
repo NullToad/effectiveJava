@@ -24,6 +24,7 @@ public class PhoneNumberTest extends BaseTest {
         set.add(pn1);
         set.add(pn2);
         Assert.assertEquals(1, set.size());
+        Assert.assertEquals("571-87085347", pn1.toString());
     }
 
 }
