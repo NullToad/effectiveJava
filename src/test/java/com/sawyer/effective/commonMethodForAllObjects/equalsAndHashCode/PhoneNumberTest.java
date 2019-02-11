@@ -25,6 +25,10 @@ public class PhoneNumberTest extends BaseTest {
         set.add(pn2);
         Assert.assertEquals(1, set.size());
         Assert.assertEquals("571-87085347", pn1.toString());
+        PhoneNumber pn3 = pn1.clone();
+        Assert.assertTrue(pn1 != pn3);
+        Assert.assertTrue(pn1.getClass() == pn3.getClass()); //非强制
+        Assert.assertTrue(pn1.equals(pn3)); //非强制，这里为true仅仅因为我们覆盖了equals方法
     }
 
 }

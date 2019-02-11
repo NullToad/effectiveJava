@@ -6,7 +6,7 @@ package com.sawyer.effective.commonMethodForAllObjects.equalsAndHashCode;
  * @Date: Created in 1:52 PM 2019/2/11
  */
 
-public final class PhoneNumber {
+public final class PhoneNumber implements Cloneable {
 
     private final int areaCode;
 
@@ -53,5 +53,21 @@ public final class PhoneNumber {
     @Override
     public String toString() {
         return areaCode + "-" + phone;
+    }
+
+    /**
+     * 实现cloneable的类需要覆盖clone方法，通常的做法是调用super.clone()，但如果实例中有数组（如MyStack类），
+     * 则需要对数组域进行递归调用clone方法；
+     * 在具体编程中，不建议实现cloneable接口并且提供clone方法
+     * @return
+     */
+    @Override
+    public PhoneNumber clone() {
+        try {
+            return (PhoneNumber) super.clone();
+        } catch (CloneNotSupportedException e) {
+            //不可能出现
+            throw new AssertionError();
+        }
     }
 }
