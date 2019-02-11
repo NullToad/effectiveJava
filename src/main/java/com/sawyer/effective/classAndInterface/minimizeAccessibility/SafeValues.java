@@ -13,7 +13,7 @@ import java.util.List;
 public class SafeValues {
 
     /**
-     * 不安全，客户端可以修改数组中的内容
+     * 不安全，长度非零的数组总是可变的，客户端可以修改数组中的内容
      */
     public static final Thing[] UNSAFE_VALUES = {
             new Thing("one"), new Thing("two")
