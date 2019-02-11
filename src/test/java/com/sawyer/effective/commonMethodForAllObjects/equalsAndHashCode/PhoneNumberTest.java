@@ -1,11 +1,14 @@
 package com.sawyer.effective.commonMethodForAllObjects.equalsAndHashCode;
 
 import com.sawyer.effective.BaseTest;
+import com.sawyer.effective.commonMethodForAllObjects.commonMethod.PhoneNumber;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * @Author: Sawyer
@@ -29,6 +32,21 @@ public class PhoneNumberTest extends BaseTest {
         Assert.assertTrue(pn1 != pn3);
         Assert.assertTrue(pn1.getClass() == pn3.getClass()); //非强制
         Assert.assertTrue(pn1.equals(pn3)); //非强制，这里为true仅仅因为我们覆盖了equals方法
+    }
+
+    @Test
+    public void testCompare() {
+        Set<PhoneNumber> sortedSet = new TreeSet<>();
+        PhoneNumber pn1 = new PhoneNumber(571, 87085347);
+        PhoneNumber pn2 = new PhoneNumber(571, 87085346);
+        PhoneNumber pn3 = new PhoneNumber(570, 87085347);
+        sortedSet.add(pn1);
+        sortedSet.add(pn2);
+        sortedSet.add(pn3);
+        Iterator<PhoneNumber> iterator = sortedSet.iterator();
+        Assert.assertEquals(pn3, iterator.next());
+        Assert.assertEquals(pn2, iterator.next());
+        Assert.assertEquals(pn1, iterator.next());
     }
 
 }

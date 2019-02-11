@@ -1,12 +1,12 @@
-package com.sawyer.effective.commonMethodForAllObjects.equalsAndHashCode;
+package com.sawyer.effective.commonMethodForAllObjects.commonMethod;
 
 /**
  * @Author: Sawyer
- * @Description: 牢记，覆盖equals方法时也要覆盖hashCode方法
+ * @Description: 演示常用的通用方法，equals, hashCode, toString, clone, compareTo
  * @Date: Created in 1:52 PM 2019/2/11
  */
 
-public final class PhoneNumber implements Cloneable {
+public final class PhoneNumber implements Cloneable, Comparable<PhoneNumber> {
 
     private final int areaCode;
 
@@ -35,7 +35,7 @@ public final class PhoneNumber implements Cloneable {
     }
 
     /**
-     * 覆盖了equals方法必须同时覆盖hashCode方法，否则在使用集合类时会有问题。要保证每个在equals方法中使用的属性都在hashCode中使用
+     * 覆盖了equals方法必须同时覆盖hashCode方法，否则在使用HashMap, HashSet时会有问题。要保证每个在equals方法中使用的属性都在hashCode中使用
      * @return
      */
     @Override
@@ -69,5 +69,26 @@ public final class PhoneNumber implements Cloneable {
             //不可能出现
             throw new AssertionError();
         }
+    }
+
+    /**
+     * 对于"值类"，建议实现compareTo方法，以便使用TreeSet, TreeMap等有序容器
+     * @param o
+     * @return
+     */
+    @Override
+    public int compareTo(PhoneNumber o) {
+        //先比较areaCode后比较phone
+        if (areaCode < o.areaCode) {
+            return -1;
+        } else if (areaCode > o.areaCode) {
+            return 1;
+        }
+        if (phone < o.phone) {
+            return -1;
+        } else if (phone > o.phone) {
+            return 1;
+        }
+        return 0;
     }
 }
