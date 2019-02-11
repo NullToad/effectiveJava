@@ -12,6 +12,8 @@ public final class PhoneNumber implements Cloneable, Comparable<PhoneNumber> {
 
     private final int phone;
 
+    private volatile int hashCode;
+
     public PhoneNumber(int areaCode, int phone) {
         this.areaCode = areaCode;
         this.phone = phone;
@@ -35,14 +37,20 @@ public final class PhoneNumber implements Cloneable, Comparable<PhoneNumber> {
     }
 
     /**
-     * 覆盖了equals方法必须同时覆盖hashCode方法，否则在使用HashMap, HashSet时会有问题。要保证每个在equals方法中使用的属性都在hashCode中使用
+     * 覆盖了equals方法必须同时覆盖hashCode方法，否则在使用HashMap, HashSet时会有问题。
+     * 要保证每个在equals方法中使用的属性都在hashCode中使用
+     * 如果计算hashCode开销比较大，可以缓存起来
      * @return
      */
     @Override
     public int hashCode() {
-        int result = 17;
-        result = 31 * result + areaCode;
-        result = 31 * result + phone;
+        int result = hashCode;
+        if (result == 0) {
+            result = 17;
+            result = 31 * result + areaCode;
+            result = 31 * result + phone;
+            hashCode = result;
+        }
         return result;
     }
 
