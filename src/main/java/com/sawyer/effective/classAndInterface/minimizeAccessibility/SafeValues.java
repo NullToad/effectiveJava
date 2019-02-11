@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * @Author: Sawyer
- * @Description: 使类和成员的访问级别最小化，实例域绝不能是共有的
+ * @Description: 使类和成员的访问级别最小化，实例域绝不能是共有的，共有类用于都不应该暴露可变的域
  * @Date: Created in 4:05 PM 2019/2/11
  */
 
