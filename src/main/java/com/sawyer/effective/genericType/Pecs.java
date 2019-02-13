@@ -10,12 +10,6 @@ import java.util.*;
 
 public class Pecs {
 
-    public static <E> Set<E> union(Set<? extends E> s1, Set<? extends E> s2) {
-        Set<E> set = new HashSet<>(s1);
-        set.addAll(s2);
-        return set;
-    }
-
     public static <T> void copy(List<? super T> dest, List<? extends T> src) {
         int srcSize = src.size();
         if (srcSize > dest.size())

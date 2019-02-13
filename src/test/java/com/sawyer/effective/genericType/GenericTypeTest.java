@@ -15,14 +15,6 @@ import java.util.*;
 public class GenericTypeTest extends BaseTest {
 
     @Test
-    public void union() {
-        Set<Integer> s1 = new HashSet<>(Arrays.asList(1, 2, 3));
-        Set<Long> s2 = new HashSet<>(Arrays.asList(4L, 5L, 6L));
-        Set<Number> result = Pecs.union(s1, s2);
-        Assert.assertEquals(6, result.size());
-    }
-
-    @Test
     public void copy() {
         List<Object> dest = new ArrayList<>(Arrays.asList(new Object(), new Object(), new Object()));
         List<Integer> src = new ArrayList<>(Arrays.asList(1, 2, 3));
